@@ -56,6 +56,12 @@ class SlowCalculatorJupiterTest {
         // ... should be 4, wait for it
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.textToBe(By.className("screen"), "4"));
+
+
+        //UberEats
+        //Hockey Gambling
+        //Banking System
+        //Weight Lifting
     }
 
 }

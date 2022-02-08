@@ -47,7 +47,7 @@ class MouseOverJupiterTest {
     }
 
     @Test
-    void testMouseOver() {
+    void testMouseOver() throws InterruptedException {
         driver.get(
                 "https://bonigarcia.dev/selenium-webdriver-java/mouse-over.html");
         Actions actions = new Actions(driver);
@@ -62,6 +62,7 @@ class MouseOverJupiterTest {
             WebElement caption = driver.findElement(
                     RelativeLocator.with(By.tagName("div")).near(image));
 
+            Thread.sleep(2000);
             assertThat(caption.getText()).containsIgnoringCase(imageName);
         }
     }

@@ -61,11 +61,31 @@ class DeleteCookiesJupiterTest {
                 "https://bonigarcia.dev/selenium-webdriver-java/cookies.html");
 
         Options options = driver.manage();
-        Set<Cookie> cookies = options.getCookies();
-        Cookie username = options.getCookieNamed("username");
-        options.deleteCookie(username);
 
-        assertThat(options.getCookies()).hasSize(cookies.size() - 1);
+        //cookies is the set of cookie BEFORE we deleted that one cookie
+        Set<Cookie> cookies = options.getCookies();
+
+        Cookie cookie = options.getCookieNamed("username");
+
+        //Everytime we use options we are calling the website
+        options.deleteCookie(cookie);
+
+        Cookie doesntExist = new Cookie("favorite-flavor", "chocolate chip");
+
+        options.deleteCookie(doesntExist);
+
+        //get the latest cookies from the website
+        Set<Cookie> latestCookiesOnWeb = options.getCookies();
+        boolean found = false;
+        for (Cookie c: latestCookiesOnWeb) {
+            if (c.getName().equals("username")) {
+                found = true;
+            }
+        }
+        assertThat(found).isFalse();//pass
+        assertThat(latestCookiesOnWeb).hasSize(cookies.size() - 1);//pass
+        assertThat(options.getCookieNamed("username")).isNull(); //pass
+        assertThat(cookie).isNotNull();
 
         driver.findElement(By.id("refresh-cookies")).click();
     }

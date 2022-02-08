@@ -56,10 +56,15 @@ class AddCookiesJupiterTest {
 
     @Test
     void testAddCookies() {
+
+        //Driver will get the URL
         driver.get(
                 "https://bonigarcia.dev/selenium-webdriver-java/cookies.html");
 
+        //Extract Option, option are used to manage cookies
         Options options = driver.manage();
+
+        //Create the cookie
         Cookie newCookie = new Cookie("new-cookie-key", "new-cookie-value");
         options.addCookie(newCookie);
         String readValue = options.getCookieNamed(newCookie.getName())

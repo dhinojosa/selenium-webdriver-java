@@ -49,7 +49,6 @@ class SessionIdJupiterTest {
     @Test
     void testSessionId() {
         driver.get("https://bonigarcia.dev/selenium-webdriver-java/");
-
         SessionId sessionId = ((RemoteWebDriver) driver).getSessionId();
         assertThat(sessionId).isNotNull();
         log.debug("The sessionId is {}", sessionId.toString());

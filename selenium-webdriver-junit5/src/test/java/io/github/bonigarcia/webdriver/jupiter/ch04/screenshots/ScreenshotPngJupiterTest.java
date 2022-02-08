@@ -58,6 +58,7 @@ class ScreenshotPngJupiterTest {
         driver.get("https://bonigarcia.dev/selenium-webdriver-java/");
         TakesScreenshot ts = (TakesScreenshot) driver;
 
+
         File screenshot = ts.getScreenshotAs(OutputType.FILE);
         log.debug("Screenshot created on {}", screenshot);
 

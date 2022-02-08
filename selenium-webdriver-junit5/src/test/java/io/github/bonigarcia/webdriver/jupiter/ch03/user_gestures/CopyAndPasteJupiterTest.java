@@ -59,9 +59,13 @@ class CopyAndPasteJupiterTest {
         WebElement textarea = driver.findElement(By.name("my-textarea"));
 
         Keys modifier = SystemUtils.IS_OS_MAC ? Keys.COMMAND : Keys.CONTROL;
-        actions.sendKeys(inputText, "hello world").keyDown(modifier)
-                .sendKeys(inputText, "a").sendKeys(inputText, "c")
-                .sendKeys(textarea, "v").build().perform();
+        actions.sendKeys(inputText, "hello world")
+                .keyDown(modifier)
+                .sendKeys(inputText, "a")
+                .sendKeys(inputText, "c")
+                .sendKeys(textarea, "v")
+                .build()
+                .perform();
 
         assertThat(inputText.getAttribute("value"))
                 .isEqualTo(textarea.getAttribute("value"));

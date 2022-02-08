@@ -49,7 +49,7 @@ class RelativeLocatorsJupiterTest {
                 "https://bonigarcia.dev/selenium-webdriver-java/web-form.html");
 
         WebElement link = driver.findElement(By.linkText("Return to index"));
-        RelativeBy relativeBy = RelativeLocator.with(By.tagName("input"));
+        RelativeBy relativeBy = RelativeLocator.with(By.tagName("input"));  //Look for proximate "thing"
         WebElement readOnly = driver.findElement(relativeBy.above(link));
         assertThat(readOnly.getAttribute("name")).isEqualTo("my-readonly");
     }

@@ -51,6 +51,7 @@ class ContextAndDoubleClickJupiterTest {
     void testContextAndDoubleClick() {
         driver.get(
                 "https://bonigarcia.dev/selenium-webdriver-java/dropdown-menu.html");
+
         Actions actions = new Actions(driver);
 
         WebElement dropdown2 = driver.findElement(By.id("my-dropdown-2"));

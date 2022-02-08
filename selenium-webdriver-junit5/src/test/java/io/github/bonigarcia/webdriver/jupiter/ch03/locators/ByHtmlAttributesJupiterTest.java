@@ -48,12 +48,14 @@ class ByHtmlAttributesJupiterTest {
         driver.get(
                 "https://bonigarcia.dev/selenium-webdriver-java/web-form.html");
 
-        // By name
+        // By name, use-CTRL+P = Show parameters
         WebElement textByName = driver.findElement(By.name("my-text"));
         assertThat(textByName.isEnabled()).isTrue();
 
         // By id
         WebElement textById = driver.findElement(By.id("my-text-id"));
+
+        assertThat(textById.getTagName()).isEqualTo("input");
         assertThat(textById.getAttribute("type")).isEqualTo("text");
         assertThat(textById.getDomAttribute("type")).isEqualTo("text");
         assertThat(textById.getDomProperty("type")).isEqualTo("text");
@@ -67,7 +69,7 @@ class ByHtmlAttributesJupiterTest {
                 .findElements(By.className("form-control"));
         assertThat(byClassName.size()).isPositive();
         assertThat(byClassName.get(0).getAttribute("name"))
-                .isEqualTo("my-text");
+                .isEqualTo("my-text");  //Brittle
     }
 
 }
